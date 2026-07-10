@@ -1,6 +1,6 @@
 :root {
     /* Color Palette - Premium Dark UI */
-    --bg-color: #080c18; /* Deeper midnight blue */
+    --bg-color: #080c18;
     --bg-darker: #04060c; 
     --surface-color: rgba(15, 22, 38, 0.45);
     --surface-subtle: rgba(255, 255, 255, 0.02);
@@ -15,6 +15,9 @@
     
     --glass-border: rgba(255, 255, 255, 0.06);
     --glass-glow: rgba(139, 92, 246, 0.15);
+
+    /* Uniform service image height */
+    --service-img-height: 220px;
 }
 
 * {
@@ -289,19 +292,42 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
+    align-items: stretch;
 }
 
 .grid-3 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: stretch;
 }
 
 .card {
     position: relative;
     border-radius: 24px;
-    padding: 3rem 2.5rem;
+    padding: 2.5rem 2rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
                 box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Service images - uniform size and centered crop */
+.service-img {
+    width: 100%;
+    height: var(--service-img-height);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Push CTA button to bottom of card */
+.card-cta {
+    margin-top: auto;
+    text-align: center;
 }
 
 .glass {
@@ -381,10 +407,11 @@ p {
 }
 
 .price {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: #fff;
     margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
 }
 
 .price span {
@@ -424,10 +451,20 @@ p {
     font-weight: bold;
 }
 
+.card .desc {
+    color: var(--text-sec);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+/* card-cta always goes to bottom */
 .card-cta {
     width: 100%;
     text-align: center;
     margin-top: auto;
+    padding-top: 1rem;
 }
 
 /* Featured Card specific styling */
